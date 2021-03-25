@@ -1,0 +1,38 @@
+% Introduction page, to be included in dd.tex
+
+\section{Introduction}
+\label{sect:intro}
+
+\subsection{Purpose}
+This document represents the DD (Design Document) of the CLup application; it describes CLup's architecture and integrates with the RASD. Furthermore, it describes its components, how they interact, and what is the plan for implementation, integration and testing.
+
+\subsection{Scope}
+\subsubsection{Problem description}
+CLup is a software-to-be that will help stores and customers preventing dangerous crowds during shopping due to the current Covid-19 Pandemic. This system should offer the possibility to line up from home for stores while still allowing to physically line up for stores. Moreover, it should offer the possibility to book a visit for a chosen store and get notifications about stores occupancy during the week.
+The system should also allow store managers to add their stores to the system and monitor entrances.
+
+The application has to be easy-to-use, scalable and reliable.
+
+\input{introduction/definitions}
+
+\subsection{Revision history}
+\begin{center}
+	\begin{tabular}{c | c | c}	
+		Version & Date & Comment \\ \hline
+		1.0 & 2021-01-03 & First release
+	\end{tabular}
+\end{center}
+
+\subsection{Reference documents}
+R\&DD Assignment AY 2020-2021, \textit{Software Engineering 2's BeeP page}
+
+\subsection{Document structure}
+This document is composed of the following parts:
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item \textbf{Section \ref{sect:intro}} is an introduction to the document and offers an overview of the document
+	\item \textbf{Section \ref{sect:arch}} describes the application design, showing its components and explaining the design decisions
+	\item \textbf{Section \ref{sect:ui}} shows the user interface diagrams of the application
+	\item \textbf{Section \ref{sect:trace}} maps the requirements identified in the RASD to the components described in section \ref{sect:arch}
+	\item \textbf{Section \ref{sect:iit}} suggests an implementation and test strategy 
+	\item \textbf{Section \ref{sect:effort}} reports the effort spent and the tools used to realize this document	
+\end{itemize}

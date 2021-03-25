@@ -1,0 +1,93 @@
+% Inserts the customizations
+\input{styles/commandsFile}
+
+\begin{document}
+	
+	% Front page
+	\begin{titlepage}
+		
+		% PoliMI logo
+		\centering
+		\includegraphics[scale=0.3]{Logo_Politecnico_Milano}
+		
+		% Description
+		\Large 
+		A.Y. 2020/2021
+		
+		Computer Science and Engineering
+		
+		\LARGE
+		Software Engineering 2 Project
+		\\ [3cm]
+		
+		% Title, maybe use an image
+		\textbf{\color{Blue} \Huge CLup - Customers Line-up}
+		
+		% Subtitle
+		Requirement Analysis and Specification
+		Document
+		\\ [1cm]
+	
+		% Authors
+		\Large
+		\begin{tabu}{ccccc}
+			& - & & - & \\
+			& - & & - & \\
+			& - & & - & 
+		\end{tabu}
+	
+	% Should place somewhere the logo
+	\end{titlepage}
+	
+	% Table for deliverable-specific info
+	\begin{table}[h!]
+		\begin{tabu} to \textwidth { X[0.3,r,p] X[0.7,l,p] }
+			\hline
+			\textbf{Deliverable:} 	& RASD\\
+			\textbf{Title:} 		& CLup - Requirement Analysis and Verification Document \\
+			\textbf{Authors:}		& \\
+			\textbf{Version:} 		& 1.0 \\ 
+			\textbf{Date:} 			& 2020-12-22 \\
+			\textbf{Download page:} & \href{https://github.com/rb-sl/SoftEng2Project2020}{https://github.com/rb-sl/SoftEng2Project2020} \\
+			\textbf{Copyright:} 	& © 2020 – All rights reserved \\
+			\hline
+		\end{tabu}
+	\end{table}
+	
+	\setcounter{page}{2}
+	
+	% Pages for table of contents and lists
+	\newpage	
+	\addcontentsline{toc}{section}{Table of Contents}
+	\tableofcontents
+	
+	\newpage
+	\addcontentsline{toc}{section}{List of Figures}
+	\listoffigures
+	
+	% Introduction section
+	\clearpage
+	\input{introduction/introduction}
+	
+	% Description section
+	\clearpage
+	\input{overview/overview}
+	
+	% Requirements section
+	\clearpage
+	\input{requirements/requirements}
+	
+	% Alloy section
+	\clearpage
+	\input{alloy/alloy}
+		
+	% Effort section
+	\clearpage
+	\input{effort/effort}
+	
+	% References and bibliography
+	\clearpage
+	\addcontentsline{toc}{section}{References}
+	\bibliographystyle{plain}
+	\bibliography{RASD}
+\end{document}

@@ -1,0 +1,84 @@
+% Description section, to be included in RASD.tex
+
+\section{Overall Description}
+\label{sect:overview}
+
+\subsection{Product perspective}
+The application's users will be able to interact through either mobile apps or web-based applications (predominantly with an interface optimized for mobile devices).
+
+When used by customers, the system will need to use a web mapping service such as Google Maps to provide a position (if needed) and calculate travel times.
+
+On the other hand, when used in stores, it will need to be connected to QR code readers (either mobile devices or dedicated scanners) ticket printers, and screens.
+
+\input{overview/scenarios}
+
+\subsection{Product functions}
+The major objective of the application is to decrease queues outside stores; this is achieved by allowing customers to line up from home and book visits for specific dates and times. These functions are integrated with alerts telling the user when to leave home, along with possibility to subscribe to notifications about store occupancy throughout the week to better plan store visits.
+
+For customers not using the application, options to take physical tickets and wait outside store are offered.
+
+\subsection{User characteristics}
+Due to the nature of the application, users can span a wide variety of people with different needs of accessibility and functions.
+
+\subsubsection{Actors}
+Actors represent the groups of people that interact with the application. The relations among the active actors are shown in Figure \ref{actors}.
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item \textbf{Prospective e-Customer}: A person who would like to use the application as customer
+	\item \textbf{Prospective Store Manager}: A person who would like to register their store
+	\item \textbf{Physical Customer}: A customer not registered to the application
+	\item \textbf{e-Customer}: A customer using the application
+	\item \textbf{Store Manager}: A user managing a store
+\end{itemize}
+
+\begin{center}
+	\begin{figure}[h]
+		\centering	
+		\includegraphics[width=.7\textwidth] {actors}
+		\caption{Active actor relations}
+		\label{actors} 
+	\end{figure}
+\end{center}
+
+\subsection{Assumptions, dependencies and constraints}
+
+\subsubsection{Text assumptions}
+Due to the ambiguity created by the natural language, we made the following assumptions about the specification.
+
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item For each store exists only one store manager; this way, if more people need to use the functions they will need an already logged in terminal
+	\item Some places in stores will need to be reserved to tickets, both in their physical and virtual form, to avoid creating situations where reservations monopolize the entrances
+	\item QR codes will need to be scanned both at entrance and exit, in order to better know the store's occupation and how much time customers spend inside
+\end{itemize}
+
+\input{overview/domains}
+
+\newpage
+\subsection{Domain Diagrams}
+The high-level class diagram of the application can be seen in Figure \ref{class}, while Figure \ref{ticket_state} contains the state diagram for tickets; the beginning of the $CanEnter$ state corresponds to the start of the delay window. Figure \ref{open_store} shows the acceptance states of a store during its opening hours.
+
+\begin{center}
+	\begin{figure}[h]
+		\centering	
+		\includegraphics[width=0.9\textwidth] {state_diagrams/ticket}
+		\caption{Ticket state diagram}
+		\label{ticket_state} 
+	\end{figure}
+\end{center}
+
+\begin{center}
+	\begin{figure}[h]
+		\centering	
+		\includegraphics[width=0.9\textwidth] {state_diagrams/open_store}
+		\caption{Open store diagram}
+		\label{open_store} 
+	\end{figure}
+\end{center}
+
+\begin{landscape}
+	\begin{figure}[hp]
+		\centering	
+		\includegraphics[height=\textheight] {class}
+		\caption{Class Diagram}
+		\label{class} 
+	\end{figure}
+\end{landscape}

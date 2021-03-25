@@ -1,0 +1,19 @@
+% Alloy assertions, to be included in alloy.tex
+
+\subsection{Assertions}
+
+\begin{lstlisting}[language=alloy]
+	// Assertion to check that no entrance is allowed 
+	// at maximum capacity
+	assert noEnterIfFull {
+		all s: Store | all t: Ticket |
+		(#s.inside = s.capacity and t.queue = s.queue) 
+			implies !canEnter[t]
+	}
+	
+	// This assert checks that all tickets that are generated 
+	// correspond to a correct state
+	assert noWrongState {
+		no t:Ticket | t.state = WRONG
+	}
+\end{lstlisting}

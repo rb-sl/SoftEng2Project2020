@@ -1,0 +1,40 @@
+% Queue jumping algorithms, to be included in architecture.tex
+
+\subsubsection{Algorithm for queue rearrangement}
+In order to maximize a store occupancy, the system adopts an algorithm to let customers jump forward if a place is freed because someone dequeued; it is shown here through pseudocode. 
+
+What is important to note is that this behaviour is based on empty places mapped 1:1 to e-Customers through notifications (physical tickets are not allowed to shift), as shown in Figure \ref{window}: every e-Customer is allowed to jump only to one place, so that their original order can be respected (if everyone accepts). An e-Customer that rejects the jump or lets the time window expire won't be asked again (in red), while, in an extreme case like the one shown (with multiple drop during one period) a customer might be asked to jump several times.
+
+\begin{figure}[h]	
+	\centering
+	\includegraphics[width=.7\linewidth] {algorithms/queue}
+	\caption{Visualization of the queue algorithm}
+	\label{window}
+\end{figure}
+
+\paragraph{Variables}
+This pseudocode assumes the existence of a queue of tickets, treated for simplicity as an array.
+
+\paragraph{Notifier}
+Every 5 minutes, a number of customers at most equal to the number of empty places is notified of an available jump, for which they won't be notified again (to avoid both multiple notifications and being notified either after a rejection or an expiration of the given time). The empty places notification order reflects the current e-Customer order.  
+
+\begin{lstlisting}
+doNotNotify = []
+while(true)	
+	holes = queue.getHoles()
+	nextPlace = -1
+	foreach(h in holes)
+		nextPlace = max(nextPlace + 1, h + 1)
+		while(nextplace in holes 
+			or queue[nextplace] in doNotNotify)
+			nextplace++
+		queue[nextplace].getCustomer().notifyJumpTo(h)
+		doNotNotify.add(queue[nextplace], h)
+	sleep(300)
+\end{lstlisting}
+
+\paragraph{Jump}
+If a customer accepts the jump, their place in queue is updated:
+\begin{lstlisting}
+moveTo(ticket, jumpDest)
+\end{lstlisting}

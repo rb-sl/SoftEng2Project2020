@@ -1,0 +1,19 @@
+% Non-functional requirements page, to be included in requirements.tex
+
+\subsection{Non-functional requirements}
+An important non-functional requirement is the ease of use, given the wide variety of people potentially using the system. Requirements related to the system are as follows.
+
+\subsubsection{Performance}
+CLup, both for the app and the web application, should provide fast responses to user actions, possibly under 3 seconds\textsuperscript{\cite{speed}}. This result should account for about 150000 daily requests, based on competitor's data\textsuperscript{\cite{ufirst}}.
+
+\subsubsection{Availability and reliability}
+As a service used for primary needs connected to stores potentially open all day and every period of the year, CLup should be very robust and reliable, offering an availability of at least 0.999 (that corresponds to less than a day of downtime every year).
+
+\subsubsection{Security}
+All user information will need to be securely stored by the application. The communication between clients and server should be protected alongside QR codes, in order to ensure fairness in queue management too.
+
+\subsubsection{Maintainability}
+As in all software applications, maintainability should be a core property of CLup, enabling changes both related to modifications in functionalities and bug fixing.
+
+\subsubsection{Portability}
+The client system should be developed to be compatible with most of the mobile Operating Systems (for the mobile application) and browsers (for the web app). The latter option should prioritize mobile environments (i.e. smartphones, tablets) without precluding access to desktop-based systems, even if they are not the primary target of the application.

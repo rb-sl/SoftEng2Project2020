@@ -1,0 +1,112 @@
+% FIle to host alloy signatures, to be included in alloy.tex
+
+\subsection{Signatures}
+\begin{lstlisting}[language=alloy]
+	// Ticket states
+	enum State {
+		ENQUEUED, 
+		CANENTER, 
+		DEQUEUED, 
+		INSIDE, 
+		COMPLETED, 
+		WRONG
+	}
+	
+	// All clients of stores
+	sig Customer {
+		tickets: set Ticket,
+		visits: set Visit,
+		insideStore: lone Store
+	}
+	
+	// Store signature
+	sig Store {
+		capacity: one Int,
+		delayWindow: one Int,
+		queue: one Queue,
+		inside: set Customer,
+		hours: set OpeningHours
+	} {
+		capacity > 0
+		delayWindow > 0
+		#inside =< capacity 
+	}
+	
+	// Signature containing sequences of tickets
+	sig Queue {
+		store: one Store,
+		tickets: seq Ticket
+	}
+	
+	// Ticket signature
+	sig Ticket {
+		nOrder: one Int,
+		customer: one Customer,
+		queue: one Queue,
+		state: one State
+	} {
+		nOrder >= 0
+	}
+	
+	// Signature representing a visit that occurred
+	sig Visit {
+		customer: one Customer,
+		accessreq: one Ticket,
+		store: one Store,
+		weekday: one Int,
+		datetimeIN: one DateTime,
+		datetimeOUT: one DateTime
+	} {
+		weekday >= 1 and weekday =< 7
+		accessreq.queue.store = store
+		accessreq.customer = customer
+		isBefore[datetimeIN.time, datetimeOUT.time]
+		datetimeIN.time != datetimeOUT.time
+	}
+	
+	// Stores' opening hours
+	// In order to simplify the model, 
+	// no store is open during day changes
+	sig OpeningHours {
+		weekday: one Int,
+		openingTime: one Time,
+		closingTime: one Time
+	} {
+		weekday > 0 and weekday =< 7
+		isBefore[openingTime, closingTime]
+		and (openingTime.hours != closingTime.hours 
+			or openingTime.minutes != closingTime.minutes)
+	}
+	
+	// Signature used to model time
+	sig Time {
+		hours: one Int,
+		minutes: one Int
+	} {
+		hours >= 0 
+		hours < 24 
+		minutes >= 0 
+		minutes < 60
+	}
+	
+	// Signature to model a date 
+	// (to simplify the year is assumed as 2020)
+	sig Date {
+		month: one Int,
+		day: one Int
+	} { 
+		month >= 1 and month =< 12
+		day >= 1
+		(month = 4 or month = 6 or month = 9 or month = 11) 
+			implies day =< 30
+		else (month = 2) 
+			implies day <= 29
+		else day =< 31
+	}
+	
+	// Union of date and time
+	sig DateTime {
+		date: one Date,
+		time: one Time
+	}
+\end{lstlisting}

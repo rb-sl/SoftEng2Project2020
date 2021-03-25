@@ -1,0 +1,51 @@
+% Implementation, integration and test plan, to be included in dd.tex
+
+\section{Implementation, integration and test plan}
+\label{sect:iit}
+This section reports the guidelines to implement and test the CLup application. The chosen approach consists in a bottom-up development based on the dependency graph identified in Figure \ref{dep}.
+
+\subsection{Implementation}
+The chosen order of implementation, based on the highlighted dependencies and aimed at obtaining core functionalities as soon as possible is the following:
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Data Access Module
+	\item Maps Adapter
+	\item SM Account Manager Module
+	\item eC Account Manager Module
+	\item Queue Manager Module
+	\item Visit Manager Module
+	\item Access Creation Module
+	\item Store Info Manager Module
+	\item Store Statistics
+	\item Customer Statistics
+	\item Store Recommender Module
+	\item Access Request Module
+	\item Notification Module
+	\item Requests Manager Module
+	\item Subscription Module
+\end{itemize}\vspace{.5\baselineskip} 
+
+If the team is able to handle a good level of parallelization, Figure \ref{deptime} shows a suggestion of steps aimed at minimizing the overall development time; each module's length is dimensioned based on its expected implementation difficulty, and the critical path (that needs not to be delayed in order to meet potential deadlines) is highlighted in red. The graph is also useful for determining which elements can be delayed without impacting the total development time.
+
+\begin{landscape}
+	\begin{figure}[p]
+		\centering	
+		\includegraphics[width=\linewidth] {iit/dependency_graph}
+		\caption{Dependency graph}
+		\label{dep} 
+	\end{figure}
+
+	\begin{figure}[p]
+		\centering	
+		\includegraphics[width=\linewidth] {iit/dependency_time}
+		\caption{Dependency graph with expected time and critical path highlighted}
+		\label{deptime} 
+	\end{figure}
+\end{landscape}
+
+\subsection{Integration and Testing}
+\subsubsection{Unit testing}
+The unit test can be performed as soon as a component has been developed, or even during its realization to better check its conformity to requirements. Having chosen a bottom-up approach, only Drivers are needed in order to correctly perform unit tests.
+
+\input{iit/strategy}
+
+\input{iit/sys_testing}

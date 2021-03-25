@@ -1,0 +1,71 @@
+% Architecural design section, to be included in architecture.tex
+
+\section{Architectural design}
+\label{sect:arch}
+
+\subsection{Overview}
+
+\subsubsection{High level architecture}
+Figure \ref{hwarch} shows what machines are going to be used for the system: most components are replicated to both increase performance (through the use of load balancers) and reliability, as one machine can take over the work of the other in case of fault. The logical layers are:
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Presentation: realized by the clients, either the application or the web browser
+	\item Logic: covered by the web servers and the application servers
+	\item Data: consists in the database servers and their DBs
+\end{itemize}
+\vspace{.5\baselineskip}
+The tiers of the system are illustrated more precisely in Section \ref{sect:deploy}.
+
+\begin{figure}[h]	
+	\centering
+	\includegraphics[width=\linewidth] {deployment_diagrams/hw_arch}
+	\caption{High level architecture of the system}
+	\label{hwarch} 
+\end{figure}
+
+\subsubsection{Class diagram}
+A class diagram of the model of the application is visible in Figure \ref{class}; it is more detailed and presents only classes that will be developed with respect to the higher-level one shown in the RASD; it corresponds to the core system residing on the application server.
+Getter and setter methods have been omitted for space reasons, but they are present for every attribute except user passwords.
+
+Classes relative to users represent the way they interact with the application; the e-Customer can therefore take all the actions described in the previous document, while the Store Manager (also through the Store class) can control every aspect of entrances and of their activity.
+
+\subsubsection{ER diagram}
+Figure \ref{er} shows the ER model for the application's database. The tables are mapped to some classes in the class diagram (that adds some generalizations).
+
+\begin{landscape}
+	\begin{figure}[p]
+		\centering	
+		\includegraphics[height=\textheight] {class_diagram/class_diagram}
+		\caption{Class Diagram}
+		\label{class} 
+	\end{figure}
+\end{landscape}
+
+\begin{figure}[p]	
+	\centering
+	\includegraphics[width=\linewidth] {er_diagram/ERDiagram}
+	\caption{ER diagram of the database}
+	\label{er} 
+\end{figure}
+\clearpage
+\input{architecture/component}
+\input{architecture/deployment}
+\input{architecture/runtime}
+\input{architecture/interfaces}
+
+\subsection{Selected architectural styles and patterns}
+This section reports some directions on the use of design patterns during the implementation of the CLup system. As previously stated, the system is based on a modular design, but the following patterns are suggested:
+
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item The base architecture pattern is MVC (Model-View-Controller), as it allows to decouple the application logic from the user interaction
+	\item To support MVC, the Observer Pattern\textsuperscript{\cite{observer}} should be used
+	\item To have an extended interface to the database the DAO\textsuperscript{\cite{dao3}} (Data Access Object) architectural pattern is used to separate the business logic from the data tier, to moreover improve testing simplicity, to increase code readability and to make the independent from the data access technology   
+	\item The application's and the online mapping system is done through an Adapter, in order to create a layer between the application and the API, and have a unified interface\textsuperscript{\cite{adapter}} for all the system's components.
+	\item For what concerns the Statistic Module, a façade pattern\textsuperscript{\cite{facade}} is used to offer a unique and easy-to-use interface to its components.
+	\item The frontend should use a Command pattern\textsuperscript{\cite{command}} to hide the difference among functionalities offered from the UI from a code perspective
+	\item The notification module should work as a Servant to the modules using it
+\end{itemize}\vspace{.5\baselineskip} 
+
+\subsection{Other design decisions}
+
+\input{architecture/alg_queue}
+\input{architecture/qr_generator}

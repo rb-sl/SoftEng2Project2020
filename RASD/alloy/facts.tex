@@ -1,0 +1,135 @@
+% Alloy facts, to be included in alloy.tex
+
+\subsection{Facts}
+
+\begin{lstlisting}[language=alloy]
+	// Fact to define ticket unicity in queues
+	fact uniqueTicketInQueue {
+		// No different tickets having the same number
+		no disj t, t': Ticket | all q: Queue |
+			t in q.tickets.elems 
+			and t' in q.tickets.elems
+			and t.nOrder = t'.nOrder
+		
+		// No ticket is in a queue more than once
+		all q: Queue | !q.tickets.hasDups
+	}
+	
+	// Facts modeling necessary relations between signatures
+	fact implications {
+		// Customer <=> Ticket
+		all c: Customer | all t: Ticket | 
+			t in c.tickets iff t.customer = c
+		
+		// Customer <=> store
+		all c: Customer | all s: Store | 
+			s = c.insideStore iff c in s.inside
+		
+		// Queue <=> Store
+		all q: Queue | all s: Store | 
+			q.store = s iff s.queue = q
+		
+		// Queue => Ticket
+		all t: Ticket | all q: Queue | 
+			t in q.tickets.elems implies t.queue = q
+		
+		// Visit <=> Customer
+		all v: Visit | all c: Customer |
+			v.customer = c iff v in c.visits
+	}
+
+	// A ticket can correspond to at most one visit
+	fact oneTicketPerVisit {
+		no disj v,v': Visit | 
+			v.accessreq = v'.accessreq
+	}
+	
+	// A customer cannot request a ticket for a store 
+	// they are already enqueued for
+	fact noSameCustomerInQueue {
+		all q: Queue | no disj t, t': Ticket |  
+			t in q.tickets.elems 
+			and t' in q.tickets.elems 
+			and t.customer = t'.customer 
+	}
+	
+	// A customer inside a store must have entered with a ticket
+	fact customerInsideRequiresTicket {
+		all c: Customer | all s: Store | c.insideStore = s implies 
+			one t: Ticket | t.customer = c and t.state = INSIDE
+	}
+	
+	// Ticket Ordering
+	fact TicketOrder {
+		all t: Ticket |
+			t.nOrder = plus[t.queue.tickets.idxOf[t], 1]
+	}
+	
+	// Ticket states
+	fact ticketStates {
+		all t: Ticket |  
+		(!ticketInside[t] 
+		and !ticketInVisit[t] 
+		and !ticketInItsQueue[t]) 
+			implies t.state = DEQUEUED
+		else ticketInside[t] 
+			implies t.state = INSIDE
+		else ticketInVisit[t] 
+			implies t.state = COMPLETED
+		else ticketInItsQueue[t] and !canEnter[t] 
+			implies t.state = ENQUEUED
+		else ticketInItsQueue[t] and canEnter[t] 
+			implies t.state = CANENTER
+		else t.state = WRONG
+	}
+	
+	// A customer cannot have a visit for a ticket 
+	// if they are still inside
+	fact noVisitWhileInside {
+		no v: Visit |
+			v.customer in v.store.inside
+	}
+	
+	// A customer cannot be contemporarily inside a store 
+	// and enqueued for it
+	fact noQueuedWhileInside {
+		no t: Ticket |
+			t in t.queue.tickets.elems 
+			and t.customer in t.queue.store.inside
+	}
+	
+	// A customer cannot have a visit and be in a queue
+	// with the same ticket
+	fact noEnqueudAndVisit {
+		no v: Visit |
+			v.accessreq in v.store.queue.tickets.elems
+	}
+	
+	// A visit can only occur during one opening period of a store
+	fact visitDuringOpening { 
+		all v: Visit | 
+		some h: OpeningHours | 
+			h in v.store.hours 
+			and h.weekday = v.weekday
+			and isBefore[h.openingTime, v.datetimeIN.time]
+			and isBefore[v.datetimeOUT.time, h.closingTime]
+	}
+\end{lstlisting}
+
+Particular care has been used in defining the fact \texttt{ticketStates}; their meaning derives from four possible attributes of a ticket: it can be in the queue it's referring (Q), it can be in a visit (V), and it can correspond to a customer inside a store (I). Based on this, the following truth table has been realized to define the ticket states: 
+
+\begin{center}
+	\begin{tabular}{c c c | c}
+		Q & V & I & State \\
+		\hline
+		0 & 0 & 0 & \texttt{DEQUEUED} \\
+		0 & 0 & 1 & \texttt{INSIDE} \\
+		0 & 1 & 0 & \texttt{COMPLETED} \\
+		0 & 1 & 1 & X \\
+		1 & 0 & 0 & \texttt{CANENTER/ENQUEUED} \\
+		1 & 0 & 1 & X \\
+		1 & 1 & 0 & X \\
+		1 & 1 & 1 & X \\
+	\end{tabular}
+\end{center}
+Where the \texttt{CANENTER} and \texttt{ENQUEUED} states are distinguished through the \texttt{canEnter} predicate. Every state indicated by an \texttt{X} corresponds to an inconsistent state that must not happen.

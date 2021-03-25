@@ -1,0 +1,11 @@
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.out
+*.gz
+*.toc
+/DD/**/*.pdf
+/RASD/**/*.pdf

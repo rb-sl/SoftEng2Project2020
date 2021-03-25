@@ -1,0 +1,33 @@
+% Requirements section, to be included in RASD.tex
+
+\section{Specific Requirements}
+\label{sect:requirements}
+
+\subsection{External interface requirements}
+
+\input{requirements/ui}
+
+\subsubsection{Hardware interfaces}
+On the e-Customer side, hardware interfaces will be the user's own devices, especially mobile.
+
+For what concerns Store Managers, the system will be interfaced to a device with a camera or to a dedicated QR reader to scan codes, a printer for physical tickets and a screen to display the current number.
+
+\subsubsection{Software interfaces}
+CLup will offer two separate user interfaces based on the user's functions (e-Customer or Store Manager), either through mobile or web-based applications. 
+
+The system itself will not offer public interfaces for other applications, but will need to be connected to the web mapping service through its API.
+
+\subsubsection{Communication interfaces}
+As security is a major concern, all client-server communication will use HTTPS, based on the security of TLS 1.3. APIs will be accessed through the REST protocol, encrypted using TLS as well.
+
+\input{requirements/functional}
+
+\input{requirements/use_cases}
+
+\input{requirements/sequence}
+
+\input{requirements/mapping}
+
+\input{requirements/non_functional}
+
+\input{requirements/constraints}

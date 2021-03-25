@@ -1,0 +1,201 @@
+% Requirements traceability section
+
+\section{Requirements traceability}
+\label{sect:trace}
+
+This section illustrates which components realize each requirement previously specified in the RASD.
+
+\paragraph{[R0] Must allow users to provide credentials}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item eC Account manager module
+	\item SM Account manager module	
+\end{itemize}
+
+\paragraph{[R1] Username must be unique}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item eC Account manager module
+	\item SM Account manager module
+\end{itemize}
+
+\paragraph{[R2] Store id must be unique}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Store info manager module
+\end{itemize}
+
+\paragraph{[R3] Must allow store managers to add or modify their store’s information}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Store info manager module
+\end{itemize}
+
+\paragraph{[R4] Users must be able to login}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item eC Account manager module
+	\item SM Account manager module
+\end{itemize}
+
+\paragraph{[R5] Must be able to provide the list of available stores in the user’s proximity}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+	\item Store recommender
+\end{itemize}
+
+\paragraph{[R6] Must know the e-Customer’s position}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+	\item Maps adapter
+\end{itemize}
+
+\paragraph{[R6.1] Must localize the e-Customer or let them provide manually a position}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+	\item Maps adapter
+\end{itemize}
+
+\paragraph{[R7] Must assign a unique and sequential reservation id}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access creation
+\end{itemize}
+
+\paragraph{[R8] Must generate a QR code to be scanned at entrance and exit}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access creation
+\end{itemize}
+
+\paragraph{[R9] Must let e-Customers choose their mean of transport}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+\end{itemize}
+
+\paragraph{[R10] Must allow the entrance when it is the customer’s turn}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Visit manager module
+	\item Queue manager module
+\end{itemize}
+
+\paragraph{[R11] Must allow a delay of at most M minutes on a customer’s turn}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Visit manager module
+	\item Queue manager module
+\end{itemize}
+
+\paragraph{[R12] Must show e-Customers the number of enqueued customers in front of them}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Queue manager module
+	\item Store recommender 
+\end{itemize}
+
+\paragraph{[R13] Must show users historical data on given weekdays}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+	\item Customer visit statistics module
+\end{itemize}
+
+\paragraph{[R14] At least P\% places must be reserved for tickets}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+	\item Store info manager module
+	\item Store recommender module
+\end{itemize}
+
+\paragraph{[R15] Must notify e-Customers within a suitable time from entrance}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Customer visit statistics module
+	\item Notification module 
+\end{itemize}
+
+\paragraph{[R15.1] Notification time must be based on current store occupation}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access creation module
+	\item Customer visit statistics module
+	\item Notification module
+\end{itemize}
+
+\paragraph{[R15.2] Notification time must be based on estimated travel time}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Maps Adapter module
+	\item Notification module
+\end{itemize}
+
+\paragraph{[R16] Must let e-Customers advance if a preceding customer dequeued}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Queue manager module
+	\item Notification module
+\end{itemize}
+
+\paragraph{[R17] Must keep track of people inside the stores}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Visit manager module
+\end{itemize}
+
+\paragraph{[R17.1] Must allow scanning QR codes on entrance and exit}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Visit manager module
+\end{itemize}
+
+\paragraph{[R18] Must not allow the entrance of more customers than prescribed}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Visit manager module
+\end{itemize}
+
+\paragraph{[R20] Physical tickets must be placed on the same queue as virtual ones}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access creation module
+	\item Queue manager module
+\end{itemize}
+
+\paragraph{[R21] Physical tickets must be printed}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Creation module
+\end{itemize}
+
+\paragraph{[R22] Must allow Physical Customers to scan their code in order to dequeue}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Visit manager module
+\end{itemize}
+
+\paragraph{[R23] e-Customers who book a visit must be allowed to enter at their chosen time}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Visit manager module
+\end{itemize}
+
+\paragraph{[R24] Must let e-Customers insert the expected duration of the visit}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+\end{itemize}
+
+\paragraph{[R24.1] Must be able to infer and suggest the duration for long term customers}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Customer visit statistics module
+\end{itemize}
+
+\paragraph{[R25] Must let e-Customers insert a list of items/categories they intend to buy}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Access Request module
+\end{itemize}
+
+\paragraph{[R26] Alternatives must be based on information provided by the e-Customer and store occupation (both real time and historical)}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Requests manager module
+	\item Queue manager module
+	\item Customer visit statistics module
+	\item Store occupation stats module
+	\item Store recommender module
+	\item Maps adapter module
+\end{itemize}
+
+\paragraph{[R27] e-Customers must be able to subscribe to the notification service}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Subscription module
+\end{itemize}
+
+\paragraph{[R28] Must let e-Customers unsubscribe from the notification service}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Subscription module
+\end{itemize}
+
+\paragraph{[R29] The system must notify the e-Customers based on their choices}
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Subscription module
+	\item Store occupation stats module
+	\item Notification module
+\end{itemize}

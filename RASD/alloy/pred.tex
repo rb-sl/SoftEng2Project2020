@@ -1,0 +1,55 @@
+% Alloy predicates, to be included in alloy.tex
+
+\subsection{Predicates and functions}
+
+\begin{lstlisting}[language=alloy]
+	// Predicate to check if a time is before another one
+	pred isBefore[t, t': Time] {
+		t.hours < t'.hours or
+		((t.hours = t'.hours) and t.minutes =< t'.minutes)
+	}
+	
+	// Checks if a ticket's queue points to it 
+	pred ticketInItsQueue[t: Ticket] {
+		t in t.queue.tickets.elems
+	}
+	
+	// Checks if a visit containing the ticket exists 
+	pred ticketInVisit[t: Ticket] {
+		some v: Visit | v.accessreq = t
+	}
+	
+	// Checks if the ticket's customer is inside the ticket's store
+	pred ticketInside[t: Ticket] {
+		t.customer in t.queue.store.inside
+	}
+	
+	// Checks if a ticket is one of the first in its queue
+	pred canEnter[t: Ticket] {
+		t in t.queue.tickets.subseq[0, minus[
+			minus[t.queue.store.capacity, #t.queue.store.inside]
+		, 1]].elems 
+	}
+
+	// Predicate used to show a world
+	// with exactly one ticket for each state
+	pred showOneTicketPerState {
+		// Imposing some opening time and visit time
+		// to better visualize the world
+		all h: OpeningHours | 
+			minus[h.closingTime.hours, h.openingTime.hours] > 3 
+		all v: Visit | 
+			minus[v.datetimeOUT.time.hours, v.datetimeIN.time.hours] < 3 
+		
+		// Limiting 1 ticket for each customer 
+		// for visualization purposes
+		all c: Customer |
+			#c.tickets = 1
+		
+		one t: Ticket | t.state = ENQUEUED
+		one t: Ticket | t.state = DEQUEUED
+		one t: Ticket | t.state = COMPLETED
+		one t: Ticket | t.state = INSIDE
+		one t: Ticket | t.state = CANENTER
+	}
+\end{lstlisting}

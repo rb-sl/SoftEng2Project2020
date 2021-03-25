@@ -1,0 +1,42 @@
+% User interface design section, to be included in dd.tex
+
+\section{User interface design}
+\label{sect:ui}
+This section illustrates the UX diagrams, i.e. the transitions between the user interface's pages. The application's mock-ups can be found in the RASD.
+
+\subsection{e-Customer UX diagram}
+The e-Customer application is composed of four sections reachable through tabs:
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Home page: displays some instructions to better explain the application's interfaces and functions, and how to navigate through them. Moreover, it shows the active access requests (if present)
+	\item Ticket creation: allows the user to line up by filling the creation form and then choosing a store among the suggested ones
+	\item Book a visit: allows the e-Customer to create a new reservation by passing through the three booking form steps and then by choosing the store they like from the list of the ones meeting the specified parameters
+	\item Settings: allows e-Customers to manage notifications, subscriptions and their profile
+\end{itemize}\vspace{.5\baselineskip}
+
+These sections can be reached after the login or signup process Figure \ref{uxec} shows the transitions.
+
+\begin{figure}[h]	
+	\centering
+	\includegraphics[width=\linewidth] {ux_diagrams/eCustomer_UX}
+	\caption{UX diagram of the e-Customer application}
+	\label{uxec} 
+\end{figure}
+
+\newpage
+\subsection{Store Manager UX diagram}
+The Store Manager application is composed of four sections as well:
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Home page: displays instructions about the application's functionalities and gives the possibility to access other functions such as viewing store statistics or modifying the store's parameters
+	\item Ticket creation: allows the Store Manager to see the enqueued tickets and to create and print physical ones
+	\item Reservations: allows the Store Manager to visualize active reservations by date
+	\item Settings: allows Store Manager to change information related to their profile
+\end{itemize}\vspace{.5\baselineskip}
+These sections can be reached after a login or signup process ended up successfully; furthermore, every screen can activate the QR code scanning function. Figure \ref{uxsm} shows the transitions 
+among the interfaces.
+
+\begin{figure}[h]	
+	\centering
+	\includegraphics[width=\linewidth] {ux_diagrams/StoreUX}
+	\caption{UX diagram of the Store Manager application}
+	\label{uxsm} 
+\end{figure}

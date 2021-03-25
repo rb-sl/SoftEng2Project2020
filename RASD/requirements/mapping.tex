@@ -1,0 +1,219 @@
+% Goal, requirements and domains mapping. To be included in requirements.tex
+
+\subsection{Goal Mapping}
+In this section, goals are mapped to requirements and domain assumptions.
+
+\subsubsection{[G0] Allow prospective e-Customers to register to the application}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R0]}] Must allow users to provide credentials
+	\item [\textbf{[R1]}] Username must be unique 
+	\\
+	\item [\textbf{[D0]}] Prospective users will complete the registration process
+	\item [\textbf{[D3]}] Information provided by users upon registration is correct
+	\item [\textbf{[D11]}] The internet connection is always working
+\end{itemize}
+
+\subsubsection{[G1] Allow Prospective Store Managers to register to the application by adding their store}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R0]}] Must allow users to provide credentials
+	\item [\textbf{[R1]}] Username must be unique 
+	\item [\textbf{[R2]}] Store id must be unique
+	\item [\textbf{[R3]}] Must allow store managers to add or modify their store’s information
+	\\
+	\item [\textbf{[D0]}] Prospective users will complete the registration process
+	\item [\textbf{[D3]}] Information provided by users upon registration is correct
+	\item [\textbf{[D7]}] Information about stores inserted by SMs is correct
+	\item [\textbf{[D11]}] The internet connection is always working
+\end{itemize}
+
+\subsubsection{[G2] Allow e-customers to line up from home}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R4]}] Users must be able to login
+	\item [\textbf{[R5]}] Must be able to provide the list of available stores in the user’s proximity
+	\item [\textbf{[R6]}] Must know the e-Customer’s position
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R6.1]}] Must localize the e-Customer or let them provide manually a position
+	\end{itemize}
+	\item [\textbf{[R7]}] Must assign a unique and sequential reservation id
+	\item [\textbf{[R8]}] Must generate a QR code to be scanned at entrance and exit
+	\item [\textbf{[R9]}] Must let e-Customers choose their mean of transport
+	\item [\textbf{[R10]}] Must allow the entrance when it is the customer’s turn
+	\item [\textbf{[R11]}] Must allow a delay of at most M minutes on a customer’s turn
+	\item [\textbf{[R12]}] Must show e-Customers the number of enqueued customers in front of them
+	\item [\textbf{[R13]}] Must show users historical data on given weekdays
+	\item [\textbf{[R14]}] At least P% places must be reserved for tickets
+	\item [\textbf{[R15]}] Must notify e-Customers within a suitable time from entrance
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R15.1]}] Notification time must be based on current store occupation 
+		\item [\textbf{[R15.2]}] Notification time must be based on estimated travel time
+	\end{itemize}
+	\item [\textbf{[R16]}] Must let e-Customers advance if a preceding customer dequeued
+	\\
+	\item [\textbf{[D1]}] Only people enqueued access the stores (both app and physical)
+	\item [\textbf{[D2]}] Information provided by e-customers corresponds to their will
+	\item [\textbf{[D4]}] Customers enter only if allowed by the application
+	\item [\textbf{[D5]}] Customers respect the choices made during the input phase
+	\item [\textbf{[D6]}] Calculated travel time is correct
+	\item [\textbf{[D7]}] Information about stores inserted by SMs is correct
+	\item [\textbf{[D8]}] Customers entering a store exit after some time
+	\item [\textbf{[D9]}] If a client exits at a given time, he must have entered in the same opening period
+	\item [\textbf{[D10]}] Ticket printers and QR readers work properly
+	\item [\textbf{[D11]}] The internet connection is always working
+	\item [\textbf{[D12]}] Users accept to receive notifications from the application
+	\item [\textbf{[D13]}] Stores show the current customer number
+	\item [\textbf{[D14]}] The external web mapping system is always available and there is signal
+\end{itemize}
+
+\subsubsection{[G2.1] Allow e-Customers to dequeue}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R4]}] Users must be able to login
+	\\
+	\item [\textbf{[D11]}] The internet connection is always working
+\end{itemize}
+
+\subsubsection{[G3] Allow Store Managers to monitor entrances}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R3]}] Must allow store managers to add or modify their store’s information
+	\item [\textbf{[R4]}] Users must be able to login
+	\item [\textbf{[R17]}] Must keep track of people inside the stores
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R17.1]}] Must allow scanning QR codes on entrance and exit
+	\end{itemize}
+	\item [\textbf{[R18]}] Must not allow the entrance of more customers than prescribed
+	\\
+	\item [\textbf{[D1]}] Only people enqueued access the stores (both app and physical)
+	\item [\textbf{[D4]}] Customers enter only if allowed by the application
+	\item [\textbf{[D5]}] Customers respect the choices made during the input phase
+	\item [\textbf{[D7]}] Information about stores inserted by SMs is correct
+	\item [\textbf{[D8]}] Customers entering a store exit after some time
+	\item [\textbf{[D9]}] If a client exits at a given time, he must have entered in the same opening period
+	\item [\textbf{[D10]}] Ticket printers and QR readers work properly
+	\item [\textbf{[D11]}] The internet connection is always working
+	\item [\textbf{[D13]}] Stores show the current customer number
+\end{itemize}
+
+\subsubsection{[G4] Allow customers to physically line up}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R7]}] Must assign a unique and sequential reservation id
+	\item [\textbf{[R8]}] Must generate a QR code to be scanned at entrance and exit
+	\item [\textbf{[R10]}] Must allow the entrance when it is the customer’s turn
+	\item [\textbf{[R11]}] Must allow a delay of at most M minutes on a customer’s turn
+	\item [\textbf{[R20]}] Physical tickets must be placed on the same queue as virtual ones
+	\item [\textbf{[R21]}] Physical tickets must be printed
+	\\
+	\item [\textbf{[D1]}] Only people enqueued access the stores (both app and physical)
+	\item [\textbf{[D4]}] Customers enter only if allowed by the application
+	\item [\textbf{[D8]}] Customers entering a store exit after some time
+	\item [\textbf{[D9]}] If a client exits at a given time, he must have entered in the same opening period
+	\item [\textbf{[D10]}] Ticket printers and QR readers work properly
+	\item [\textbf{[D11]}] The internet connection is always working
+	\item [\textbf{[D13]}] Stores show the current customer number
+\end{itemize}
+
+\subsubsection{[G4.1] Allow Physical Customers to dequeue}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R11]}] Must allow a delay of at most M minutes on a customer’s turn
+	\item [\textbf{[R22]}] Must allow Physical Customers to scan their code in order to dequeue
+	\\
+	\item [\textbf{[D10]}] Ticket printers and QR readers work properly
+	\item [\textbf{[D11]}] The internet connection is always working
+	\item [\textbf{[D13]}] Stores show the current customer number
+\end{itemize}
+
+\subsubsection{[G5] Allow e-Customers to book a visit}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R4]}] Users must be able to login
+	\item [\textbf{[R5]}] Must be able to provide the list of available stores in the user’s proximity
+	\item [\textbf{[R6]}] Must know the e-Customer’s position
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R6.1]}] Must localize the e-Customer or let them provide manually a position
+	\end{itemize}
+	\item [\textbf{[R7]}] Must assign a unique and sequential reservation id
+	\item [\textbf{[R8]}] Must generate a QR code to be scanned at entrance and exit
+	\item [\textbf{[R9]}] Must let e-Customers choose their mean of transport
+	\item [\textbf{[R10]}] Must allow the entrance when it is the customer’s turn
+	\item [\textbf{[R11]}] Must allow a delay of at most M minutes on a customer’s turn
+	\item [\textbf{[R13]}] Must show users historical data on given weekdays
+	\item [\textbf{[R14]}] At least P\% places must be reserved for tickets
+	\item [\textbf{[R15]}] Must notify e-Customers within a suitable time from entrance
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R15.2]}] Notification time must be based on estimated travel time
+	\end{itemize}
+	\item [\textbf{[R23]}] e-Customers who book a visit must be allowed to enter at their chosen time
+	\item [\textbf{[R24]}] Must let e-Customers insert the expected duration of the visit
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R24.1]}] Must be able to infer and suggest the duration for long term customers
+	\end{itemize}
+	\item [\textbf{[R25]}] Must let e-Customers insert a list of items/categories they intend to buy
+	\\
+	\item [\textbf{[D1]}] Only people enqueued access the stores (both app and physical)
+	\item [\textbf{[D2]}] Information provided by e-customers corresponds to their will
+	\item [\textbf{[D4]}] Customers enter only if allowed by the application
+	\item [\textbf{[D5]}] Customers respect the choices made during the input phase
+	\item [\textbf{[D6]}] Calculated travel time is correct
+	\item [\textbf{[D7]}] Information about stores inserted by SMs is correct
+	\item [\textbf{[D8]}] Customers entering a store exit after some time
+	\item [\textbf{[D10]}] Ticket printers and QR readers work properly
+	\item [\textbf{[D11]}] The internet connection is always working
+	\item [\textbf{[D12]}] Users accept to receive notifications from the application
+	\item [\textbf{[D14]}] The external web mapping system is always available and there is signal
+\end{itemize}
+
+\subsubsection{[G5.1] Allow e-Customers to delete a visit}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R4]}] Users must be able to login
+	\\
+	\item [\textbf{[D11]}] The internet connection is always working
+\end{itemize}
+
+\subsubsection{[G6] Can suggest alternative slots to balance the number of customers}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R4]}] Users must be able to login
+	\item [\textbf{[R6]}] Must know the e-Customer’s position
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R6.1]}] Must localize the e-Customer or let them provide manually a position
+	\end{itemize}
+	\item [\textbf{[R17]}] Must keep track of people inside the stores
+	\item [\textbf{[R26]}] Alternatives must be based on information provided by the e-Customer and store occupation (both real time and historical)
+	\\
+	\item [\textbf{[D4]}] Customers enter only if allowed by the application
+	\item [\textbf{[D5]}] Customers respect the choices made during the input phase
+	\item [\textbf{[D6]}] Calculated travel time is correct
+	\item [\textbf{[D7]}] Information about stores inserted by SMs is correct
+	\item [\textbf{[D8]}] Customers entering a store exit after some time
+	\item [\textbf{[D9]}] If a client exits at a given time, he must have entered in the same opening period
+	\item [\textbf{[D11]}] The internet connection is always working
+	\item [\textbf{[D14]}] The external web mapping system is always available and there is signal
+\end{itemize}
+
+\subsubsection{[G7] Allow e-Customers to manage slot notifications}
+\begin{itemize}
+	\setlength\itemsep{-1mm}
+	\item [\textbf{[R4]}] Users must be able to login
+	\item [\textbf{[R6]}] Must know the e-Customer’s position
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item [\textbf{[R6.1]}] Must localize the e-Customer or let them provide manually a position
+	\end{itemize}
+	\item [\textbf{[R17]}] Must keep track of people inside the stores
+	\item [\textbf{[R27]}] e-Customers must be able to subscribe to the notification service
+	\item [\textbf{[R28]}] Must let e-Customers unsubscribe from the notification service
+	\item [\textbf{[R29]}] The system must notify the e-Customers based on their choices
+	\\
+	\item [\textbf{[D2]}] Information provided by e-customers corresponds to their will
+	\item [\textbf{[D7]}] Information about stores inserted by SMs is correct
+	\item [\textbf{[D8]}] Customers entering a store exit after some time
+	\item [\textbf{[D9]}] If a client exits at a given time, he must have entered in the same opening period
+	\item [\textbf{[D11]}] The internet connection is always working
+	\item [\textbf{[D12]}] Users accept to receive notifications from the application
+	\item [\textbf{[D14]}] The external web mapping system is always available and there is signal
+\end{itemize}

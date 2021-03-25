@@ -1,0 +1,47 @@
+% Design constraints page, to be included in requirements.tex
+
+\subsection{Design constraints}
+
+\subsubsection{Hardware and software limitations}
+The hardware and software requirements are stated here, divided by usage:
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item For the mobile application: 
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item Operating system: Android 6.0+ or iOS 9+
+		\item The device must be internet enabled
+	\end{itemize}
+	
+	\item For the web application, a device with either:
+	\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+		\item Mozilla Firefox 19.0+
+		\item Google Chrome 25.0+
+		\item Microsoft Edge 
+		\item Safari 5.1+
+		\item Opera 12.1+
+	\end{itemize}
+\end{itemize}	
+A mobile device used by a Store Manager will also need a camera.
+
+\subsubsection{Privacy policies}
+The system will need to access some device data in order to function properly; the following table summarizes the permission requests:
+
+\begin{center}
+	\rowcolors{4}{white}{tablerow}
+	\begin{tabular}{c | c | c | c | c }
+		\multirow{2}{*}{Permission} & \multicolumn{2}{c|}{e-Customer} & \multicolumn{2}{c}{Store Manager} \\ \cline{2-5}
+		                            & Mobile & Web                    & Mobile & Web                      \\ \hline
+		          Storage           & Mandatory      &                       &       &  \\
+		          Camera &  &  & Mandatory & Mandatory \\
+		          Localization & Optional & Optional &  & 
+	\end{tabular}
+\end{center}
+
+Moreover, in order to comply with privacy regulations\textsuperscript{\cite{gdpr}}, CLup:
+\begin{itemize}[itemsep=-1mm, topsep=-1mm]
+	\item Will ask for the user's consent for their data processing
+	\item Will not use any of the user data for purposes different from the offered service
+	\item Will not request personal data that is not necessary to offer the service
+	\item Will not keep any personal data once it is not needed anymore
+	\item Will ensure privacy and security by design
+\end{itemize}
+

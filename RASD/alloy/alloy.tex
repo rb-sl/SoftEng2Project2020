@@ -1,0 +1,14 @@
+% Alloy section, to be included in RASD.tex
+
+\section{Formal Analysis Using Alloy}
+\label{sect:alloy}
+This section describes the model defined through the Alloy language\textsuperscript{\cite{alloy}}. It is used to define the subset of the domain used to handle tickets, that represents the most critical portion of the system. 
+
+As it can be noted in Section \ref{sect:run}, the chosen bitwidth is 7, thus allowing the generation of integers between $-64$ and $+63$ to meet all constraints.
+
+\input{alloy/signatures}
+\input{alloy/facts}
+\input{alloy/pred}
+\input{alloy/assert}
+
+\input{alloy/results}
